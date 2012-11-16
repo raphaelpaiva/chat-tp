@@ -45,6 +45,9 @@ public class Janela extends JFrame implements ActionListener{
 		txtAcao.setWrapStyleWord(true);
 		txtAcao.setPreferredSize(new Dimension(390,110));
 		btnEnvia.setPreferredSize(new Dimension(95,110));
+		btnEnvia.setIcon(new javax.swing.ImageIcon(getClass().getResource("envia.png")));
+		btnEnvia.setVerticalTextPosition(JButton.BOTTOM);
+		btnEnvia.setHorizontalTextPosition(JButton.CENTER);
 		pnlAcoes.add(txtAcao);
 		pnlAcoes.add(btnEnvia);
 		
