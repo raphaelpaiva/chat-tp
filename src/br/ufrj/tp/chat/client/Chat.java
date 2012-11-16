@@ -10,7 +10,7 @@ public class Chat {
 	public static void main(String[] args) throws UnknownHostException, IOException {
 		BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 
-		System.out.print("Enter your id: ");
+		System.out.print("Insira seu identificador: ");
 		
 		String clientId = in.readLine();
 		

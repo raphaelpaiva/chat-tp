@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import javax.swing.*;
 
 public class Client {
 
@@ -28,7 +29,15 @@ public class Client {
 		clientReader = new ClientReaderService(socket, clientId);
 		clientReader.start();
 		
-		System.out.println("Connected to server!");
+		System.out.println("Conectado ao servidor!");
+		JFrame janela = new Janela(this.clientId);
+		janela
+		.setLocation((java.awt.Toolkit.getDefaultToolkit()
+				.getScreenSize().width / 2)
+				- (janela.getWidth() / 2), (java.awt.Toolkit
+				.getDefaultToolkit().getScreenSize().height / 2)
+				- (janela.getHeight() / 2));
+		janela.setVisible(true);
 	}
 	
 	public void sendMessage(String message) {
