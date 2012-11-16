@@ -7,6 +7,8 @@ import javax.swing.*;
 
 
 import java.awt.*;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 
 //@SuppressWarnings("unused")
 public class Janela extends JFrame implements ActionListener{
@@ -16,12 +18,14 @@ public class Janela extends JFrame implements ActionListener{
 	 */
 	private static final long serialVersionUID = 1L;
 
-	JTextArea txtHistorico;
-	JTextArea txtAcao;
-	JButton btnEnvia;
+	static JTextArea txtHistorico;
+	static JTextArea txtAcao;
+	static JButton btnEnvia;
+	
 	
 	public Janela(String cliente){
-		setTitle("Chat - " + cliente); // metodo de JFrame
+		
+		setTitle("Chat - " + cliente);
 		setSize(500, 600);
 		setResizable(false);
 		JPanel pnlHistorico = new JPanel();
@@ -29,7 +33,7 @@ public class Janela extends JFrame implements ActionListener{
 		txtHistorico = new JTextArea();
 		txtAcao = new JTextArea();
 		btnEnvia = new JButton("Enviar");
-		
+		//btnEnvia.addActionListener(Client);
 		txtHistorico.setLineWrap(true);
 		txtHistorico.setWrapStyleWord(true);
 		txtHistorico.setPreferredSize(new Dimension(490,450));
@@ -47,15 +51,16 @@ public class Janela extends JFrame implements ActionListener{
 		
 		this.add(pnlHistorico, BorderLayout.NORTH);
 		this.add(pnlAcoes, BorderLayout.SOUTH);
-		escreve("Conectado ao servidor!");
+		escreve("Conex‹o estabelecida com o servidor!");
 	}
 	
-	public void escreve(String texto){
+	public static void escreve(String texto){
 		txtHistorico.setText(txtHistorico.getText()  + texto + "\n");
 	}
 	
 	@Override
-	public void actionPerformed(ActionEvent arg0) {
+	public void actionPerformed(ActionEvent e) {
+		
 		// TODO Auto-generated method stub
 		
 	}

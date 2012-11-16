@@ -5,6 +5,8 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.net.UnknownHostException;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -18,7 +20,7 @@ import javax.swing.JTextField;
 
 public class JanelaConecta extends JFrame implements ActionListener{
 	private static final long serialVersionUID = 1L;
-	public static JTextField usuario;
+	public JTextField usuario;
 	
 	public static JButton btnOK;
 	public static JButton btnSair;
@@ -85,6 +87,20 @@ public class JanelaConecta extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == JanelaConecta.btnSair){
 			System.exit(0);
+		}
+		if(e.getSource() == JanelaConecta.btnOK){
+			String clientId = this.usuario.getText();
+			Client client = new Client(clientId);
+			this.setVisible(false);
+			try {
+				client.start();
+			} catch (UnknownHostException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 		}
 		
 	}

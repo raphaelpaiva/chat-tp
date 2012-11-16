@@ -18,19 +18,19 @@ public class ClientReaderService extends Thread {
 	
 	@Override
 	public void run() {
-		System.out.println("Your id is " + clientId);
+		Janela.escreve("Conectado como " + clientId);
 		try {
 			while (active) {
 				String message;
 				message = serverToClient.readLine();
 				
 				if ( !message.startsWith(clientId) ) {
-					System.out.println(message);
+					Janela.escreve(message);
 				}
 				
 			}
 		} catch (IOException e) {
-			System.out.println("Error while reading message from Server. StackTrace should follow.");
+			Janela.escreve("Erro ao ler mensagens do servidor.");
 			e.printStackTrace();
 		}
 	}
