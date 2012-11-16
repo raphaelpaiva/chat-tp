@@ -83,7 +83,9 @@ public class JanelaConecta extends JFrame implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
+		if(e.getSource() == JanelaConecta.btnSair){
+			System.exit(0);
+		}
 		
 	}
 
