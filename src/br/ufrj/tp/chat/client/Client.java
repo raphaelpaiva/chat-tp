@@ -32,10 +32,8 @@ public class Client {
 		System.out.println("Conectado ao servidor!");
 		JFrame janela = new Janela(this.clientId);
 		janela
-		.setLocation((java.awt.Toolkit.getDefaultToolkit()
-				.getScreenSize().width / 2)
-				- (janela.getWidth() / 2), (java.awt.Toolkit
-				.getDefaultToolkit().getScreenSize().height / 2)
+		.setLocation((java.awt.Toolkit.getDefaultToolkit().getScreenSize().width / 2)
+				- (janela.getWidth() / 2), (java.awt.Toolkit.getDefaultToolkit().getScreenSize().height / 2)
 				- (janela.getHeight() / 2));
 		janela.setVisible(true);
 	}
