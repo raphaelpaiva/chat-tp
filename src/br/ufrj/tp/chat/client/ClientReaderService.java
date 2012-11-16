@@ -23,10 +23,7 @@ public class ClientReaderService extends Thread {
 			while (active) {
 				String message;
 				message = serverToClient.readLine();
-				
-				if ( !message.startsWith(clientId) ) {
-					Janela.escreve(message);
-				}
+				Janela.escreve(message);
 				
 			}
 		} catch (IOException e) {

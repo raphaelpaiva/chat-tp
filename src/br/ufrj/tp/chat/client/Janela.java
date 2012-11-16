@@ -7,8 +7,7 @@ import javax.swing.*;
 
 
 import java.awt.*;
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
+
 
 //@SuppressWarnings("unused")
 public class Janela extends JFrame implements ActionListener{
@@ -18,9 +17,9 @@ public class Janela extends JFrame implements ActionListener{
 	 */
 	private static final long serialVersionUID = 1L;
 
-	static JTextArea txtHistorico;
-	static JTextArea txtAcao;
-	static JButton btnEnvia;
+	public static JTextArea txtHistorico;
+	public static JTextArea txtAcao;
+	public static JButton btnEnvia;
 	
 	
 	public Janela(String cliente){
