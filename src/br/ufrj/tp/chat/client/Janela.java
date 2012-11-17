@@ -1,20 +1,16 @@
 package br.ufrj.tp.chat.client;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.BorderLayout;
+import java.awt.Dimension;
 
-import javax.swing.*;
+import javax.swing.BorderFactory;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
 
-
-import java.awt.*;
-
-
-//@SuppressWarnings("unused")
-public class Janela extends JFrame implements ActionListener{
+public class Janela extends JFrame {
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	public static JTextArea txtHistorico;
@@ -32,12 +28,13 @@ public class Janela extends JFrame implements ActionListener{
 		txtHistorico = new JTextArea();
 		txtAcao = new JTextArea();
 		btnEnvia = new JButton("Enviar");
-		//btnEnvia.addActionListener(Client);
+
 		txtHistorico.setLineWrap(true);
 		txtHistorico.setWrapStyleWord(true);
 		txtHistorico.setPreferredSize(new Dimension(490,450));
 		txtHistorico.setEditable(false);
 		txtHistorico.setBorder(BorderFactory.createLoweredBevelBorder());
+		txtHistorico.setText("");
 		pnlHistorico.add(txtHistorico);
 		
 		txtAcao.setBorder(BorderFactory.createLoweredBevelBorder());
@@ -53,18 +50,14 @@ public class Janela extends JFrame implements ActionListener{
 		
 		this.add(pnlHistorico, BorderLayout.NORTH);
 		this.add(pnlAcoes, BorderLayout.SOUTH);
-		escreve("Conex‹o estabelecida com o servidor!");
+		
+		setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+		
+		escreve("Conexão estabelecida com o servidor!");
 	}
 	
 	public static void escreve(String texto){
 		txtHistorico.setText(txtHistorico.getText()  + texto + "\n");
 	}
 	
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		
-		// TODO Auto-generated method stub
-		
-	}
-
 }

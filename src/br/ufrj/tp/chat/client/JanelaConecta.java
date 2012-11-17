@@ -14,7 +14,6 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-
 import javax.swing.JSeparator;
 import javax.swing.JTextField;
 
@@ -25,9 +24,13 @@ public class JanelaConecta extends JFrame implements ActionListener{
 	public static JButton btnOK;
 	public static JButton btnSair;
 	
-	public JanelaConecta(){
+	private ClientController delegate;
+	
+	public JanelaConecta(ClientController delegate){
 		
 		super("Bem-vindo ao Chat");
+		
+		this.delegate = delegate;
 		
 		JPanel painel1 = new JPanel();
 		JLabel imagem = new JLabel();
@@ -48,7 +51,7 @@ public class JanelaConecta extends JFrame implements ActionListener{
 		
 		JPanel gridLogin = new JPanel();
 		gridLogin.setLayout(new GridLayout(2,2, 10, 10));
-		gridLogin.add(new JLabel("Identificação:          "));
+		gridLogin.add(new JLabel("IdentificaÁ„o:          "));
 		gridLogin.add(usuario);
 		
 		gridLogin.setMaximumSize(new Dimension(300,70));
@@ -81,6 +84,8 @@ public class JanelaConecta extends JFrame implements ActionListener{
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setResizable(false);
 		this.setVisible(true);
+		
+		setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
 	}
 
 	@Override
@@ -88,19 +93,19 @@ public class JanelaConecta extends JFrame implements ActionListener{
 		if(e.getSource() == JanelaConecta.btnSair){
 			System.exit(0);
 		}
+		
 		if(e.getSource() == JanelaConecta.btnOK){
 			String clientId = this.usuario.getText();
-			Client client = new Client(clientId);
-			this.setVisible(false);
+			
 			try {
-				client.start();
+				delegate.start(clientId);
 			} catch (UnknownHostException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
+				System.out.println("Host desconhecido!");
 			} catch (IOException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
+				System.out.println("Erro ao ler dados do servidor! " + e);
 			}
+			
+			this.dispose();
 		}
 		
 	}
