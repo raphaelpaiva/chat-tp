@@ -6,6 +6,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 public class Janela extends JFrame {
@@ -30,11 +31,11 @@ public class Janela extends JFrame {
 
 		txtHistorico.setLineWrap(true);
 		txtHistorico.setWrapStyleWord(true);
-		txtHistorico.setPreferredSize(new Dimension(490,450));
+		JScrollPane scrHistorico = new JScrollPane(txtHistorico);
+		scrHistorico.setPreferredSize(new Dimension(490,450));
 		txtHistorico.setEditable(false);
-		txtHistorico.setBorder(BorderFactory.createLoweredBevelBorder());
 		txtHistorico.setText("");
-		pnlHistorico.add(txtHistorico);
+		pnlHistorico.add(scrHistorico);
 		
 		txtAcao.setBorder(BorderFactory.createLoweredBevelBorder());
 		txtAcao.setLineWrap(true);

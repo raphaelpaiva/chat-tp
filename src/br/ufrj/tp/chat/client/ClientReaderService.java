@@ -28,7 +28,11 @@ public class ClientReaderService extends Thread {
 					}
 				}else{
 					if(message.startsWith("?")){
-						Janela.escreve("Pergunta: " + GamePerguntas.perguntas(message));
+						if (message.startsWith("?P")){ 
+							Janela.escreve("\nSeus pontos: " + Client.pontos + "/5\n");
+						}else{
+							Janela.escreve("Pergunta: " + GamePerguntas.perguntas(message));
+						}
 					}else{
 						if(!message.startsWith("!"))
 							Janela.escreve(message);

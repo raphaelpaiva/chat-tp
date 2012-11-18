@@ -1,15 +1,15 @@
 package br.ufrj.tp.chat.client;
 
 public class GamePerguntas {
-	public static String p1 = "Protocolo que transmite datagramas sem garantia de entrega dos pacotes.";
+	public static String p1 = "Protocolo que transmite datagramas sem garantia de entrega dos pacotes?\n";
 	public static String r1 = "udp";
-	public static String p2 = "Categoria dos servidores DNS responsaveis por dominos como .com, .fr. .br...";
+	public static String p2 = "Categoria dos servidores DNS responsaveis por dominos como .com, .fr. .br...?\n";
 	public static String r2 = "tld";
-	public static String p3 = "Campo de verificacao de integridade de dados incluido no cabecalho de mensagens TCP";
+	public static String p3 = "Campo de verificacao de integridade de dados incluido no cabecalho de mensagens TCP?\n";
 	public static String r3 = "checksum";
-	public static String p4 = "Servidor que ocupa a porta 25 do TCP.";
+	public static String p4 = "Servidor que ocupa a porta 25 do TCP?\n";
 	public static String r4 = "smtp";
-	public static String p5 = "Sistema de transferencia de arquivos de cliente para cliente, geralmente usando protocolo propriet‡rio.";
+	public static String p5 = "Sistema de transferencia de arquivos de cliente para cliente, geralmente usando protocolo propriet‡rio?\n";
 	public static String r5 = "p2p";
 	
 	public static String perguntas(String mensagem){

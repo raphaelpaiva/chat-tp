@@ -99,6 +99,7 @@ public class Chat implements ClientController, ActionListener, KeyListener {
 		if (mensagem.contains(GamePerguntas.r3)) client.sendMessageGame("!3");
 		if (mensagem.contains(GamePerguntas.r4)) client.sendMessageGame("!4");
 		if (mensagem.contains(GamePerguntas.r5)) client.sendMessageGame("!5");
+		
 	}
 	
 }

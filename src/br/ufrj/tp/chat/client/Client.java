@@ -17,8 +17,11 @@ public class Client {
 	
 	private String clientId;
 	
+	public static int pontos;
+	
 	public Client(String clientId) {
 		this.clientId = clientId;
+		pontos = 0;
 	}
 
 	public void start() throws UnknownHostException, IOException {
@@ -37,6 +40,7 @@ public class Client {
 	public void sendMessageGame(String message) {
 		clientToServer.println(message);
 		clientToServer.flush();
+		if (message.startsWith("!")) pontos++;
 	}
 	
 	public void shutdown() throws IOException {
