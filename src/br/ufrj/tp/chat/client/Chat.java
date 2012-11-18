@@ -68,7 +68,7 @@ public class Chat implements ClientController, ActionListener, KeyListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == Janela.btnEnvia){
-			client.sendMessage(Janela.txtAcao.getText());
+			envia(Janela.txtAcao.getText());
 			Janela.txtAcao.setText("");
 		}
 		
@@ -77,7 +77,7 @@ public class Chat implements ClientController, ActionListener, KeyListener {
 	@Override
 	public void keyPressed(KeyEvent arg0) {
 		if(arg0.getKeyCode() == 10 && arg0.getSource() == Janela.txtAcao){
-			client.sendMessage(Janela.txtAcao.getText());
+			envia(Janela.txtAcao.getText());
 			
 		}
 	}
@@ -91,5 +91,14 @@ public class Chat implements ClientController, ActionListener, KeyListener {
 
 	@Override
 	public void keyTyped(KeyEvent arg0) {}
+	
+	public void envia(String mensagem){
+		client.sendMessage(mensagem);
+		if (mensagem.contains(GamePerguntas.r1)) client.sendMessageGame("!1");
+		if (mensagem.contains(GamePerguntas.r2)) client.sendMessageGame("!2");
+		if (mensagem.contains(GamePerguntas.r3)) client.sendMessageGame("!3");
+		if (mensagem.contains(GamePerguntas.r4)) client.sendMessageGame("!4");
+		if (mensagem.contains(GamePerguntas.r5)) client.sendMessageGame("!5");
+	}
 	
 }

@@ -9,9 +9,10 @@ public class ClientReaderService extends Thread {
 	
 	private BufferedReader serverToClient;
 	private boolean active = true;
-	
-	public ClientReaderService(Socket socket) throws IOException {
+	private String clientId;
+	public ClientReaderService(Socket socket, String clientId) throws IOException {
 		serverToClient = new BufferedReader( new InputStreamReader(socket.getInputStream()) );
+		this.clientId = clientId;
 	}
 	
 	@Override
@@ -20,7 +21,19 @@ public class ClientReaderService extends Thread {
 			while (active) {
 				String message;
 				message = serverToClient.readLine();
-				Janela.escreve(message);
+				System.out.println(message);
+				if (message.contains("PVT")){
+					if (message.contains("@" + this.clientId) || message.startsWith(clientId)){
+						Janela.escreve(message);
+					}
+				}else{
+					if(message.startsWith("?")){
+						Janela.escreve("Pergunta: " + GamePerguntas.perguntas(message));
+					}else{
+						if(!message.startsWith("!"))
+							Janela.escreve(message);
+					}
+				}
 				
 			}
 		} catch (IOException e) {

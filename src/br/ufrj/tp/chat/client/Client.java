@@ -8,7 +8,7 @@ import java.net.UnknownHostException;
 public class Client {
 
 	private static final String SERVER_IP_ADDRESS = "127.0.0.1";
-	private static final int SERVER_DEFAULT_PORT = 6161;
+	private static final int SERVER_DEFAULT_PORT = 6500;
 
 	private Socket socket;
 	private PrintWriter clientToServer;
@@ -25,12 +25,17 @@ public class Client {
 		socket = new Socket(SERVER_IP_ADDRESS, SERVER_DEFAULT_PORT);
 		clientToServer = new PrintWriter(socket.getOutputStream());
 
-		clientReader = new ClientReaderService(socket);
+		clientReader = new ClientReaderService(socket, clientId);
 		clientReader.start();
 	}
 	
 	public void sendMessage(String message) {
 		clientToServer.println(clientId + ": " + message);
+		clientToServer.flush();
+	}
+	
+	public void sendMessageGame(String message) {
+		clientToServer.println(message);
 		clientToServer.flush();
 	}
 	

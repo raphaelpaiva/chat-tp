@@ -13,6 +13,8 @@ public class ClientListener extends Thread {
 	private PrintWriter serverToClient;
 	private Server server;
 	
+	
+	
 	public ClientListener(Socket socket, Server server) throws IOException {
 		this.socket = socket;
 		this.server = server;
@@ -46,6 +48,18 @@ public class ClientListener extends Thread {
 			}
 			
 			broadcast(message);
+			
+			if(message.contains("/GAME")){
+				Server.game = true;
+				broadcast("\nJogo de Perguntas e Respostas Iniciado!\n");
+				broadcast("?" + Server.pergunta);
+			}
+			if(Server.game == true && message.startsWith("!" + Server.pergunta)){
+				broadcast("\nResposta Correta!\n");
+				Server.pergunta++;
+				broadcast("?" + Server.pergunta);
+			}
+			
 		}
 	}
 	

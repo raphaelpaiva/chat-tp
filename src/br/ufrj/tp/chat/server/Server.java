@@ -8,9 +8,12 @@ import java.util.List;
 
 public class Server {
 	
-	private static final int DEFAULT_PORT = 6161;
+	private static final int DEFAULT_PORT = 6500;
 	private ServerSocket serverSocket;
 	private List<ClientListener> listeners;
+	
+	public static boolean game;
+	public static int pergunta;
 	
 	/**
 	 * @param args
@@ -33,6 +36,8 @@ public class Server {
 		
 		serverSocket = new ServerSocket(DEFAULT_PORT);
 		listeners = new LinkedList<ClientListener>();
+		game = false;
+		pergunta = 1;
 		
 		Runtime.getRuntime().addShutdownHook(new ServerShutdownHook(this));
 	}

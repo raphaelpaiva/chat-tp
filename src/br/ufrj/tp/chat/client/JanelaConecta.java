@@ -51,7 +51,7 @@ public class JanelaConecta extends JFrame implements ActionListener{
 		
 		JPanel gridLogin = new JPanel();
 		gridLogin.setLayout(new GridLayout(2,2, 10, 10));
-		gridLogin.add(new JLabel("IdentificaÁ„o:          "));
+		gridLogin.add(new JLabel("Identificação:          "));
 		gridLogin.add(usuario);
 		
 		gridLogin.setMaximumSize(new Dimension(300,70));

@@ -2,7 +2,6 @@ package br.ufrj.tp.chat.client;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
-
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -53,7 +52,7 @@ public class Janela extends JFrame {
 		
 		setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
 		
-		escreve("Conexão estabelecida com o servidor!");
+		escreve("Conex‹o estabelecida com o servidor!");
 	}
 	
 	public static void escreve(String texto){
