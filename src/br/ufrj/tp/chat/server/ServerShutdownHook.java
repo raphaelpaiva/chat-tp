@@ -9,6 +9,8 @@ public class ServerShutdownHook extends Thread {
 	
 	@Override
 	public void run() {
-		server.shutdown();
+		try{
+			server.shutdown();
+		} catch(Exception e){}
 	}
 }

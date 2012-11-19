@@ -26,7 +26,9 @@ public class Server {
 		server.start();
 		
 		while(true) {
-			server.listen();
+			try{
+				server.listen();
+			}catch(Exception e){}
 		}
 		
 	}
@@ -41,7 +43,6 @@ public class Server {
 		
 		Runtime.getRuntime().addShutdownHook(new ServerShutdownHook(this));
 	}
-
 	
 	public void listen() throws IOException {
 		Socket socket = serverSocket.accept();
@@ -76,8 +77,8 @@ public class Server {
 			}
 			
 			listeners.clear();
-			
-			serverSocket.close();
+			if (!serverSocket.isClosed())
+				serverSocket.close();
 		} catch (Exception e) {
 			System.out.println("Error while shutting down Server. StackTrace should follow.");
 			e.printStackTrace();

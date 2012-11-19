@@ -28,22 +28,17 @@ public class ClientListener extends Thread {
 			listen();
 			
 		} catch (Exception e) {
-			System.out.println("Error while listening in ClientHandler. StackTrace should follow.");
-			e.printStackTrace();
+			System.out.println("Conex‹o fechada");
 		} finally {
-			shutdown();
+			if(!this.socket.isClosed()) shutdown();
 		}
 		
 	}
 	
 	private void listen() throws IOException {
-		while (true) {
+		while (!this.socket.isClosed()) {
 			String message;
 			message = clientToServer.readLine();
-			
-			if(message.equals("/CLOSE")) {
-				break;
-			}
 						
 			broadcast(message);
 			

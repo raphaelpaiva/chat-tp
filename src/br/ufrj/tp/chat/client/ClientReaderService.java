@@ -40,10 +40,7 @@ public class ClientReaderService extends Thread {
 				}
 				
 			}
-		} catch (IOException e) {
-			Janela.escreve("Erro ao ler mensagens do servidor.");
-			e.printStackTrace();
-		}
+		} catch (IOException e) {}
 	}
 	
 	public void shutdown() {
