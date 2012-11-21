@@ -39,8 +39,9 @@ public class ClientListener extends Thread {
 		while (!this.socket.isClosed()) {
 			String message;
 			message = clientToServer.readLine();
-						
-			broadcast(message);
+			if(message != null){
+				broadcast(message);
+			}
 			
 			if(message.contains("/GAME")){
 				Server.game = true;

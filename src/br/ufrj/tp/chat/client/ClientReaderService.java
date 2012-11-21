@@ -19,25 +19,24 @@ public class ClientReaderService extends Thread {
 	public void run() {
 		try {
 			while (active) {
-				String message;
-				message = serverToClient.readLine();
-				System.out.println(message);
-				if (message.contains("PVT")){
-					if (message.contains("@" + this.clientId) || message.startsWith(clientId)){
-						Janela.escreve(message);
-					}
-				}else{
-					if(message.startsWith("?")){
-						if (message.startsWith("?P")){ 
-							Janela.escreve("\nSeus pontos: " + Client.pontos + "/5\n");
-						}else{
-							Janela.escreve("Pergunta: " + GamePerguntas.perguntas(message));
+					String message;
+					message = serverToClient.readLine();
+					if (message.contains("PVT")){
+						if (message.contains("@" + this.clientId) || message.startsWith(clientId)){
+							Janela.escreve(message);
 						}
 					}else{
-						if(!message.startsWith("!"))
-							Janela.escreve(message);
+						if(message.startsWith("?")){
+							if (message.startsWith("?P")){ 
+								Janela.escreve("\nSeus pontos: " + Client.pontos + "/5\n");
+							}else{
+								Janela.escreve("Pergunta: " + GamePerguntas.perguntas(message));
+							}
+						}else{
+							if(!message.startsWith("!"))
+								Janela.escreve(message);
+						}
 					}
-				}
 				
 			}
 		} catch (IOException e) {}
