@@ -53,7 +53,7 @@ public class Janela extends JFrame {
 		
 		setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
 		
-		escreve("Conex‹o estabelecida com o servidor!");
+		//escreve("Conex‹o estabelecida com o servidor!");
 	}
 	
 	public static void escreve(String texto){

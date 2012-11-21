@@ -16,9 +16,7 @@ public class Chat implements ClientController, ActionListener, KeyListener {
 	private Client client;
 	
 	public static void main(String[] args) throws UnknownHostException, IOException {
-		
 		Chat chat = new Chat();
-		
 		chat.abrirJanelaConecta();
 	}
 
@@ -34,7 +32,6 @@ public class Chat implements ClientController, ActionListener, KeyListener {
 	@Override
 	public void start(String clientId) throws UnknownHostException, IOException {
 		client = new Client(clientId);
-
 		client.start();
 		
 		abrirJanelaChat(clientId);
@@ -55,14 +52,16 @@ public class Chat implements ClientController, ActionListener, KeyListener {
 			    new WindowAdapter() { 
 			        public void windowClosing(WindowEvent e) { 
 			            try {
-							client.shutdown();
+							client.sendByeByeMessage();
+			            	client.shutdown();
 							janela.dispose();
 						} catch (IOException e1) {}
 			        } 
 			    } 
 			);
-		
+		Janela.escreve("Conex‹o estabelecida com servidor em " + client.getAddress());
 		Janela.escreve("Conectado como " + clientId);
+		client.sendIntroMessage();
 	}
 	
 	@Override

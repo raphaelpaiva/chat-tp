@@ -22,7 +22,6 @@ public class Server {
 	public static void main(String[] args) throws IOException {
 		
 		Server server = new Server();
-
 		server.start();
 		
 		while(true) {
@@ -34,7 +33,7 @@ public class Server {
 	}
 	
 	private void start() throws IOException {
-		System.out.println("Starting Server...");
+		System.out.println("Iniciando servidor.");
 		
 		serverSocket = new ServerSocket(DEFAULT_PORT);
 		listeners = new LinkedList<ClientListener>();
@@ -46,10 +45,9 @@ public class Server {
 	
 	public void listen() throws IOException {
 		Socket socket = serverSocket.accept();
-		System.out.println("Accepted socket from " + socket.getInetAddress() + ".");
+		System.out.println("Conexao estabelecida com socket " + socket.getInetAddress() + ".");
 		
 		ClientListener listener = new ClientListener(socket, this);
-		
 		register(listener);
 	}
 	
@@ -70,7 +68,7 @@ public class Server {
 
 	public void shutdown() {
 		try {
-			System.out.println("Shutting down...");
+			System.out.println("Fechando todas as conexoes com o servidor.");
 			
 			for (ClientListener listener : listeners) {
 				listener.shutdown();

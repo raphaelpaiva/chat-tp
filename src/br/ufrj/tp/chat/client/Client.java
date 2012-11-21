@@ -23,11 +23,14 @@ public class Client {
 		this.clientId = clientId;
 		pontos = 0;
 	}
+	
+	public String getAddress(){
+		return SERVER_IP_ADDRESS + ":" + SERVER_DEFAULT_PORT;
+	}
 
 	public void start() throws UnknownHostException, IOException {
 		socket = new Socket(SERVER_IP_ADDRESS, SERVER_DEFAULT_PORT);
 		clientToServer = new PrintWriter(socket.getOutputStream());
-
 		clientReader = new ClientReaderService(socket, clientId);
 		clientReader.start();
 	}
@@ -36,6 +39,17 @@ public class Client {
 		clientToServer.println(clientId + ": " + message);
 		clientToServer.flush();
 	}
+	
+	public void sendIntroMessage() {
+		clientToServer.println(clientId + " entrou na conversa.");
+		clientToServer.flush();
+	}
+
+	public void sendByeByeMessage() {
+		clientToServer.println(clientId + " saiu da conversa.");
+		clientToServer.flush();
+	}
+
 	
 	public void sendMessageGame(String message) {
 		clientToServer.println(message);

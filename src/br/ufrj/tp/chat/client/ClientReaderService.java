@@ -10,8 +10,9 @@ public class ClientReaderService extends Thread {
 	private BufferedReader serverToClient;
 	private boolean active = true;
 	private String clientId;
+	
 	public ClientReaderService(Socket socket, String clientId) throws IOException {
-		serverToClient = new BufferedReader( new InputStreamReader(socket.getInputStream()) );
+		serverToClient = new BufferedReader(new InputStreamReader(socket.getInputStream()) );
 		this.clientId = clientId;
 	}
 	
